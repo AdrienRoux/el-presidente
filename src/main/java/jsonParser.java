@@ -1,7 +1,5 @@
 import Factions.Factions;
-import History.EventChoices;
-import History.Events;
-import History.Scenario;
+import History.*;
 import Resources.Agriculture;
 import Resources.Industry;
 import Resources.Treasury;
@@ -11,11 +9,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -136,6 +132,8 @@ public class jsonParser {
 
     private ArrayList<EventChoices> initChoices(JSONArray choices){
         ArrayList<EventChoices> eventChoices = new ArrayList<>();
+        JSONObject factionsEffectsData = null;
+        JSONObject resourcesEffectsData = null;
 
         for (int x = 0; x < choices.length(); x++) {
             String name = null;
@@ -150,10 +148,85 @@ public class jsonParser {
                 if (key.equals("choice")) {
                     name = value.toString();
                 }
+
+                if (key.equals("effects")){
+                    JSONArray effects = choiceProperties.getJSONArray("effects");
+
+                    for (int j = 0; j < effects.length(); j++) {
+                        JSONObject effect = effects.getJSONObject(j);
+
+                        for (int k = 0; k < effect.keySet().toArray().length; k++) {
+                            if (effect.keySet().toArray()[k].equals("actionOnFaction")){
+                                factionsEffectsData = effect.getJSONObject("actionOnFaction");
+                            }
+                            if (effect.keySet().toArray()[k].equals("actionOnFactor")){
+                                resourcesEffectsData = effect.getJSONObject("actionOnFactor");
+                            }
+                        }
+                    }
+                }
             }
 
-            eventChoices.add(new EventChoices(name, new ArrayList<>(), new ArrayList<>()));
+            eventChoices.add(new EventChoices(name, initFactionsEffects(factionsEffectsData), initResourcesEffects(resourcesEffectsData)));
         }
         return eventChoices;
+    }
+
+    private ArrayList<FactionsEffects> initFactionsEffects(JSONObject factionsEffectsData){
+        ArrayList<FactionsEffects> factionsEffects = new ArrayList<>();
+
+        if (factionsEffectsData != null){
+            factionsEffectsData.keySet().forEach(key ->{
+                FactionsEffects factionEffect = new FactionsEffects(key, Integer.parseInt(factionsEffectsData.get(key).toString()));
+                factionsEffects.add(factionEffect);
+            });
+        }
+
+        return factionsEffects;
+    }
+
+    private ArrayList<ResourcesEffects> initResourcesEffects(JSONObject resourcesEffectsData){
+        ArrayList<ResourcesEffects> resourcesEffects = new ArrayList<>();
+
+        if (resourcesEffectsData != null){
+            resourcesEffectsData.keySet().forEach(key ->{
+                ResourcesEffects resourcesEffect = new ResourcesEffects(key, Integer.parseInt(resourcesEffectsData.get(key).toString()));
+                resourcesEffects.add(resourcesEffect);
+            });
+        }
+
+        return resourcesEffects;
+    }
+
+    public static String getFilePath() throws URISyntaxException {
+        File folder = new File(new File(Main.class.getProtectionDomain().getCodeSource().getLocation()
+                .toURI()).getPath() + "/../../src/main/resources/Json");
+
+        File[] listOfFiles = folder.listFiles();
+        ArrayList<Integer> indexOfFiles = new ArrayList<Integer>();
+
+        String filePath = null;
+
+        if (listOfFiles != null) {
+            for (int i = 0; i < listOfFiles.length; i++) {
+                if (listOfFiles[i].isFile()) {
+                    indexOfFiles.add(i);
+                }
+            }
+
+            System.out.println("Sélectionnez un fichier :");
+
+            for (int i = 0; i < indexOfFiles.toArray().length; i++) {
+                String file = i + ":  " + listOfFiles[indexOfFiles.get(i)].getName();
+                System.out.println(file.substring(0, file.length() - 5));
+            }
+
+            Scanner sc = new Scanner(System.in);  // Create a Scanner object
+            int choice = Integer.parseInt(sc.nextLine());
+
+            filePath = listOfFiles[indexOfFiles.get(choice)].getName();
+        }
+
+        return "Json/" + filePath;
     }
 }
