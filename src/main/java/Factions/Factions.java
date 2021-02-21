@@ -3,12 +3,12 @@ package Factions;
 public class Factions {
 
     private String name;
-    private int satisfatcion;
+    private int satisfaction;
     private int population;
 
-    public Factions(String name, int satisfatcion, int population) {
+    public Factions(String name, int satisfaction, int population) {
         this.name = name;
-        this.satisfatcion = satisfatcion;
+        this.satisfaction = satisfaction;
         this.population = population;
     }
 }
