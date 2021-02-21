@@ -15,4 +15,12 @@ public class Scenario {
         this.events = events;
     }
 
+    @Override
+    public String toString() {
+        return "Scenario{" +
+                "name='" + name + '\'' +
+                ", story='" + story + '\'' +
+                ", events=" + events +
+                '}';
+    }
 }
