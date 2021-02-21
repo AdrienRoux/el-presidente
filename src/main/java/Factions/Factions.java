@@ -11,4 +11,13 @@ public class Factions {
         this.satisfaction = satisfaction;
         this.population = population;
     }
+
+    @Override
+    public String toString() {
+        return "Factions{" +
+                "name='" + name + '\'' +
+                ", satisfaction=" + satisfaction +
+                ", population=" + population +
+                '}';
+    }
 }
