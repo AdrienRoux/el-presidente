@@ -13,4 +13,6 @@ public class EventChoices {
         this.factionEffects = factionEffects;
         this.resourcesEffects = resourcesEffects;
     }
+
+
 }
