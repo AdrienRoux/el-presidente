@@ -1,4 +1,7 @@
-import World.World;
+import World.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
 import org.json.JSONObject;
 
 import javax.swing.*;
@@ -20,8 +23,10 @@ public class Main {
 
         World world = json.initWorldFromJsonData("Monde");
 
-        Arrays.asList(world.getIsland().getFactions()).forEach(System.out::println);
+        //System.out.println("Difficulty chosen : " + world.getDifficulty());
 
-        System.out.println(world.getIsland().getScenario().toString());
+        //Arrays.asList(world.getIsland().getFactions()).forEach(System.out::println);
+
+        //System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(world.getIsland().getScenario()));
     }
 }

@@ -3,7 +3,7 @@ import History.*;
 import Resources.Agriculture;
 import Resources.Industry;
 import Resources.Treasury;
-import World.World;
+import World.*;
 import com.sun.javafx.scene.control.behavior.TwoLevelFocusBehavior;
 import org.json.JSONArray;
 import org.json.JSONObject;
