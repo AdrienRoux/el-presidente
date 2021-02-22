@@ -20,4 +20,16 @@ public class Factions {
                 ", population=" + population +
                 '}';
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSatisfaction() {
+        return satisfaction;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
 }
