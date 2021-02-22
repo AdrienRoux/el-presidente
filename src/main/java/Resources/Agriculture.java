@@ -7,4 +7,8 @@ public class Agriculture {
     public Agriculture(int percentage){
         this.percentage = percentage;
     }
+
+    public int getPercentage() {
+        return percentage;
+    }
 }
