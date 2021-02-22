@@ -23,7 +23,7 @@ public class Main {
 
         World world = json.initWorldFromJsonData("Monde");
 
-        System.out.println("Difficulty chosen : " + world.getDifficulty());
+        //System.out.println("Difficulty chosen : " + world.getDifficulty());
 
         //Arrays.asList(world.getIsland().getFactions()).forEach(System.out::println);
 
