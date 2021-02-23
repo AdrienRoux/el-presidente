@@ -17,6 +17,4 @@ public class Treasury {
     {
         this.funds = this.funds - (price*quantity);
     }
-
-
 }

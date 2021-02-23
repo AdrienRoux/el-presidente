@@ -9,5 +9,4 @@ public class Market {
         treasury.buyFood(this.price,quantity);
         attic.addBatch(quantity);
     }
-
 }

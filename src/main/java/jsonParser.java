@@ -31,7 +31,6 @@ public class jsonParser {
                 initIndustry(),
                 initTreasury(),
                 initScenario()
-
         );
         return world;
     }
