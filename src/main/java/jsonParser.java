@@ -4,7 +4,6 @@ import Resources.Agriculture;
 import Resources.Industry;
 import Resources.Treasury;
 import World.*;
-import com.sun.javafx.scene.control.behavior.TwoLevelFocusBehavior;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,7 +11,6 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 
@@ -214,13 +212,13 @@ public class jsonParser {
                 }
             }
 
-            System.out.println("Sélectionnez un fichier :");
+            System.out.println("Sélectionnez un scénario :\n");
 
             for (int i = 0; i < indexOfFiles.toArray().length; i++) {
                 String file = i + ":  " + listOfFiles[indexOfFiles.get(i)].getName();
                 System.out.println(file.substring(0, file.length() - 5));
             }
-
+            System.out.println();
             Scanner sc = new Scanner(System.in);  // Create a Scanner object
             int choice = Integer.parseInt(sc.nextLine());
 
