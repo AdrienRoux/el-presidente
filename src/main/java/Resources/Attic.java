@@ -31,7 +31,8 @@ public class Attic {
 
         if(neededFood < globalFood)
         {
-
+            consumeFood(neededFood);
+            updateDurationFood();
         }
         else
         {
@@ -41,11 +42,27 @@ public class Attic {
 
     public void consumeFood(int neededFood)
     {
-        int i = 0;
         while (neededFood > 0 )
         {
-            int stock = this.foodStocked.get(i).getFoodQuantity();
-            
+            int stock = this.foodStocked.get(0).getFoodQuantity();
+            if (stock > neededFood)
+            {
+                neededFood = 0;
+                this.foodStocked.get(0).setFoodQuantity(stock-neededFood);
+            }
+            else if (stock <= neededFood)
+            {
+                neededFood = neededFood - stock;
+                this.foodStocked.remove(0);
+            }
+        }
+    }
+
+    public void updateDurationFood()
+    {
+        for (int i = 0 ; i < this.foodStocked.size() ; i++)
+        {
+            this.foodStocked.get(i).addYear();
         }
     }
 

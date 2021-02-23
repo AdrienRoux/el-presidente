@@ -17,4 +17,17 @@ public class FoodBatch {
     public int getLifeTime() {
         return lifeTime;
     }
+
+    public void setFoodQuantity(int foodQuantity) {
+        this.foodQuantity = foodQuantity;
+    }
+
+    public void setLifeTime(int lifeTime) {
+        this.lifeTime = lifeTime;
+    }
+
+    public void addYear()
+    {
+        this.lifeTime ++;
+    }
 }

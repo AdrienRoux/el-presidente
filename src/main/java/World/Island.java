@@ -47,4 +47,9 @@ public class Island {
     public Scenario getScenario() {
         return scenario;
     }
+
+    public static void killPeople(int peopleToKill, Factions[] factions)
+    {
+        
+    }
 }
