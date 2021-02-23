@@ -23,4 +23,12 @@ public class Scenario {
                 ", events=" + events +
                 '}';
     }
+
+    public String getStory() {
+        return story;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
