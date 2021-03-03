@@ -28,7 +28,7 @@ public class Attic {
         {
             globalPopulation = globalPopulation + factions[i].getPopulation();
         }
-        int neededFood = globalPopulation*4;
+        int neededFood = globalPopulation * 4;
         int globalFood = getAllFoodStocked();
 
         if(neededFood < globalFood)
@@ -38,7 +38,7 @@ public class Attic {
         }
         else
         {
-            // display pas assez de bouf go acheter
+            // display pas assez de nourriture go acheter
         }
     }
 

@@ -8,14 +8,10 @@ public class Main {
 
         jsonParser json = new jsonParser(jsonParser.getFilePath());
 
-        World world = json.initWorldFromJsonData("Monde");
+        World world = json.initWorldFromJsonData(World.chooseName());
 
         world.initGame();
 
-        //System.out.println("Difficulty chosen : " + world.getDifficulty());
-
-        //Arrays.asList(world.getIsland().getFactions()).forEach(System.out::println);
-
-        //System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(world.getIsland().getScenario()));
+        world.playYear();
     }
 }

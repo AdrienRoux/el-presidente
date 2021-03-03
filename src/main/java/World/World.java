@@ -7,7 +7,6 @@ import Resources.Industry;
 import Resources.Treasury;
 
 import org.apache.commons.lang3.text.WordUtils;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,6 +14,8 @@ public class World {
 
     private Island island;
     private Difficulty difficulty;
+    private final Season[] seasons;
+    private int currentSeason;
 
     public void initIsland(String island, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario)
     {
@@ -23,6 +24,12 @@ public class World {
 
     public World(){
         setDifficulty();
+        seasons = new Season[4];
+        seasons[0] = Season.SPRING;
+        seasons[1] = Season.SUMMER;
+        seasons[2] = Season.AUTUMN;
+        seasons[3] = Season.WINTER;
+        currentSeason = 0;
     }
 
     public Island getIsland() {
@@ -31,7 +38,7 @@ public class World {
 
     private void setDifficulty(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Choisissez la difficulté :\n");
+        System.out.println("\nChoisissez la difficulté :\n");
         for (int i = 0; i < Difficulty.values().length; i++) {
             System.out.println(i + ": " + Arrays.stream(Difficulty.values()).toArray()[i]);
         }
@@ -45,7 +52,7 @@ public class World {
     }
 
     public static void displayGameStart(){
-        System.out.println("Welcome to El Presidente !");
+        System.out.println("Bienvenue sur El Presidente !");
         System.out.println("\n----------------------------------\n");
     }
 
@@ -53,5 +60,42 @@ public class World {
         String story = this.getIsland().getScenario().getStory();
         String name = this.getIsland().getScenario().getName();
         System.out.println("\nHistoire : " + name + "\n" + WordUtils.wrap(story, 100));
+    }
+
+    public static String chooseName(){
+        System.out.println("\nVeuillez choisir un nom pour votre Monde :\n");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+
+    public int getCurrentSeason() {
+        return currentSeason;
+    }
+
+    public void endSeason(){
+        currentSeason++;
+        if (currentSeason == 4)
+            currentSeason = 0;
+    }
+
+    private void playSeason(){
+        System.out.println();
+        String seasonIntro;
+
+        if (currentSeason == 0)
+            seasonIntro = "Début du ";
+        else seasonIntro = "Début de l'";
+
+        seasonIntro += seasons[currentSeason];
+        System.out.println(seasonIntro);
+        System.out.println();
+
+        endSeason();
+    }
+
+    public void playYear(){
+        for (int i = 0; i < 4; i++) {
+            playSeason();
+        }
     }
 }
