@@ -21,6 +21,8 @@ public class Attic {
 
     public void feedPopulation(Factions[] factions)
     {
+
+        // split la fonction - inverser la responsabiliter avec un boolean dans l'island sur la qtt de nourriture
         int globalPopulation = 0;
         for(int i = 0; i < factions.length; i++)
         {

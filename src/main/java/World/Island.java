@@ -50,6 +50,19 @@ public class Island {
 
     public static void killPeople(int peopleToKill, Factions[] factions)
     {
-        
+        for (int i = 0; i < peopleToKill/4 ; i++)
+        {
+            int random = (int) (0 + (Math.random() * (factions.length - 0)));
+            factions[random].killPeople();
+            Island.decreaseSatisfactionOnDeath(factions);
+        }
+    }
+
+    public static void decreaseSatisfactionOnDeath(Factions[] factions)
+    {
+        for (int i = 0; i < factions.length ; i++)
+        {
+            factions[i].decreaseSatisfaction(2);
+        }
     }
 }

@@ -32,4 +32,14 @@ public class Factions {
     public int getPopulation() {
         return population;
     }
+
+    public void killPeople()
+    {
+        this.population --;
+    }
+
+    public void decreaseSatisfaction(int percentage)
+    {
+        this.satisfaction = this.satisfaction - percentage;
+    }
 }
