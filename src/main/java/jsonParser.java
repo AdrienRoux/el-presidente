@@ -1,9 +1,6 @@
 import Factions.Factions;
 import History.*;
-import Resources.Agriculture;
-import Resources.Attic;
-import Resources.Industry;
-import Resources.Treasury;
+import Resources.*;
 import World.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,7 +30,8 @@ public class jsonParser {
                 initIndustry(),
                 initTreasury(),
                 initScenario(),
-                initAttic()
+                initAttic(),
+                initMarket()
         );
         return world;
     }
@@ -230,10 +228,13 @@ public class jsonParser {
         return "Json/" + filePath;
     }
 
-    public Attic initAttic(){
-        System.out.println(json.getJSONObject("gameStartParameters").getJSONObject("NORMAL").get("foodUnits").toString());
+    private Attic initAttic(){
         return new Attic(
                 Integer.parseInt(json.getJSONObject("gameStartParameters").getJSONObject("NORMAL").get("foodUnits").toString())
         );
+    }
+
+    private Market initMarket(){
+        return new Market(8);
     }
 }

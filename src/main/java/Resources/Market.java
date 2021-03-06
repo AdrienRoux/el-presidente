@@ -4,6 +4,10 @@ public class Market {
 
     private int price;
 
+    public Market(int price){
+        this.price = price;
+    }
+
     public void sellFood(int quantity, Treasury treasury, Attic attic)
     {
         treasury.buyFood(this.price,quantity);
