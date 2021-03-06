@@ -2,10 +2,7 @@ package WorldTest;
 
 import Factions.Factions;
 import History.Scenario;
-import Resources.Agriculture;
-import Resources.Attic;
-import Resources.Industry;
-import Resources.Treasury;
+import Resources.*;
 import World.Island;
 import junit.framework.TestCase;
 
@@ -29,8 +26,9 @@ public class TestIsland extends TestCase{
         factions[0] = faction1;
         factions[1] = faction2;
         factions[2] = faction3;
+        Market market = new Market(8);
 
-        Island island = new Island("ile",factions,agriculture,industry,treasury,scenario,attic);
+        Island island = new Island("ile",factions,agriculture,industry,treasury,scenario,attic,market);
     }
 
 
