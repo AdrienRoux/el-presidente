@@ -230,7 +230,7 @@ public class jsonParser {
     }
 
     public Attic initAttic(){
-        System.out.print(json.getJSONObject("gameStartParameters").getJSONObject("NORMAL").get("foodUnits").toString());
+        System.out.println(json.getJSONObject("gameStartParameters").getJSONObject("NORMAL").get("foodUnits").toString());
         return new Attic(
                 Integer.parseInt(json.getJSONObject("gameStartParameters").getJSONObject("NORMAL").get("foodUnits").toString())
         );

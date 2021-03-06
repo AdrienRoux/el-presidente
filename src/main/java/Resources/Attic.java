@@ -9,6 +9,7 @@ public class Attic {
     private ArrayList<FoodBatch> foodStocked;
 
     public Attic(int quantity){
+        this.foodStocked = new ArrayList<>();
         this.addBatch(quantity);
     }
 
