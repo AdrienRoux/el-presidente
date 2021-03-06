@@ -17,13 +17,14 @@ public class Island {
     private Scenario scenario;
     private Attic attic;
 
-    public Island(String name, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario) {
+    public Island(String name, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario, Attic attic) {
         this.name = name;
         this.factions = factions;
         this.agriculture = agriculture;
         this.industry = industry;
         this.treasury = treasury;
         this.scenario = scenario;
+        this.attic = attic;
     }
 
     public String getName() {
@@ -68,7 +69,7 @@ public class Island {
     {
         for (int i = 0; i < peopleToKill/4 ; i++)
         {
-            int random = (int) (0 + (Math.random() * (factions.length - 0)));
+            int random = (int) (0 + (Math.random() * (factions.length)));
             factions[random].killPeople();
             decreaseSatisfactionOnDeath(factions);
         }
@@ -78,18 +79,16 @@ public class Island {
     {
         int globalPopulation = 0;
 
-        for(int i = 0; i < factions.length; i++)
-        {
-            globalPopulation = globalPopulation + factions[i].getPopulation();
+        for (Factions faction : factions) {
+            globalPopulation = globalPopulation + faction.getPopulation();
         }
         return globalPopulation;
     }
 
     public void decreaseSatisfactionOnDeath(Factions[] factions)
     {
-        for (int i = 0; i < factions.length ; i++)
-        {
-            factions[i].decreaseSatisfaction(2);
+        for (Factions faction : factions) {
+            faction.decreaseSatisfaction(2);
         }
     }
 }

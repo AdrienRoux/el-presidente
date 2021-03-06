@@ -3,6 +3,7 @@ package World;
 import Factions.Factions;
 import History.Scenario;
 import Resources.Agriculture;
+import Resources.Attic;
 import Resources.Industry;
 import Resources.Treasury;
 
@@ -17,9 +18,9 @@ public class World {
     private final Season[] seasons;
     private int currentSeason;
 
-    public void initIsland(String island, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario)
+    public void initIsland(String island, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario, Attic attic)
     {
-        this.island = new Island(island, factions, agriculture, industry, treasury, scenario);
+        this.island = new Island(island, factions, agriculture, industry, treasury, scenario, attic);
     }
 
     public World(){

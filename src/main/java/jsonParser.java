@@ -1,6 +1,7 @@
 import Factions.Factions;
 import History.*;
 import Resources.Agriculture;
+import Resources.Attic;
 import Resources.Industry;
 import Resources.Treasury;
 import World.*;
@@ -30,7 +31,8 @@ public class jsonParser {
                 initAgriculture(),
                 initIndustry(),
                 initTreasury(),
-                initScenario()
+                initScenario(),
+                initAttic()
         );
         return world;
     }
@@ -200,7 +202,7 @@ public class jsonParser {
                 .toURI()).getPath() + "/../../src/main/resources/Json");
 
         File[] listOfFiles = folder.listFiles();
-        ArrayList<Integer> indexOfFiles = new ArrayList<Integer>();
+        ArrayList<Integer> indexOfFiles = new ArrayList<>();
 
         String filePath = null;
 
@@ -225,5 +227,12 @@ public class jsonParser {
         }
 
         return "Json/" + filePath;
+    }
+
+    public Attic initAttic(){
+        System.out.print(json.getJSONObject("gameStartParameters").getJSONObject("NORMAL").get("foodUnits").toString());
+        return new Attic(
+                Integer.parseInt(json.getJSONObject("gameStartParameters").getJSONObject("NORMAL").get("foodUnits").toString())
+        );
     }
 }

@@ -9,6 +9,7 @@ public class Main {
         jsonParser json = new jsonParser(jsonParser.getFilePath());
 
         World world = json.initWorldFromJsonData(World.chooseName());
+        System.out.println(world.toString());
 
         world.initGame();
 
