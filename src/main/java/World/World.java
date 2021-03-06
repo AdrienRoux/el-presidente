@@ -88,7 +88,7 @@ public class World {
         System.out.println(seasonIntro);
         System.out.println();
 
-        island.launchEvent();
+        island.getScenario().launchEvent();
 
         endSeason();
     }

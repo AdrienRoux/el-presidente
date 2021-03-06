@@ -31,4 +31,8 @@ public class Scenario {
     public String getName() {
         return name;
     }
+
+    public void launchEvent(){
+        //TODO: implement handling of event
+    }
 }

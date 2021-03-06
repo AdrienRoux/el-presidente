@@ -90,10 +90,4 @@ public class Island {
             faction.decreaseSatisfaction(2);
         }
     }
-
-    public void launchEvent(){
-
-        //TODO: implement handling of events
-
-    }
 }
