@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
+//TODO: refactor the whole class into sub-ones
 
 public class jsonParser {
 
