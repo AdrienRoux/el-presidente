@@ -2,10 +2,7 @@ package World;
 
 import Factions.Factions;
 import History.Scenario;
-import Resources.Agriculture;
-import Resources.Attic;
-import Resources.Industry;
-import Resources.Treasury;
+import Resources.*;
 
 import org.apache.commons.lang3.text.WordUtils;
 import java.util.Arrays;
@@ -18,9 +15,9 @@ public class World {
     private final Season[] seasons;
     private int currentSeason;
 
-    public void initIsland(String island, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario, Attic attic)
+    public void initIsland(String island, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario, Attic attic, Market market)
     {
-        this.island = new Island(island, factions, agriculture, industry, treasury, scenario, attic);
+        this.island = new Island(island, factions, agriculture, industry, treasury, scenario, attic, market);
     }
 
     public World(){
@@ -91,7 +88,7 @@ public class World {
         System.out.println(seasonIntro);
         System.out.println();
 
-        //TODO: implement season event
+        island.launchEvent();
 
         endSeason();
     }

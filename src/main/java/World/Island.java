@@ -2,10 +2,7 @@ package World;
 
 import Factions.Factions;
 import History.Scenario;
-import Resources.Agriculture;
-import Resources.Attic;
-import Resources.Industry;
-import Resources.Treasury;
+import Resources.*;
 
 public class Island {
 
@@ -16,8 +13,9 @@ public class Island {
     private Treasury treasury;
     private Scenario scenario;
     private Attic attic;
+    private Market market;
 
-    public Island(String name, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario, Attic attic) {
+    public Island(String name, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario, Attic attic, Market market) {
         this.name = name;
         this.factions = factions;
         this.agriculture = agriculture;
@@ -25,6 +23,7 @@ public class Island {
         this.treasury = treasury;
         this.scenario = scenario;
         this.attic = attic;
+        this.market = market;
     }
 
     public String getName() {
@@ -90,5 +89,11 @@ public class Island {
         for (Factions faction : factions) {
             faction.decreaseSatisfaction(2);
         }
+    }
+
+    public void launchEvent(){
+
+        //TODO: implement handling of events
+
     }
 }
