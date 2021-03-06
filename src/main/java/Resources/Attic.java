@@ -19,10 +19,8 @@ public class Attic {
         this.foodStocked.add(new FoodBatch(quantity,0 ));
     }
 
-    public void feedPopulation(Factions[] factions)
+    public boolean isThereEnougthFood(Factions[] factions)
     {
-
-        // split la fonction - inverser la responsabiliter avec un boolean dans l'island sur la qtt de nourriture
         int globalPopulation = 0;
         for(int i = 0; i < factions.length; i++)
         {
@@ -31,15 +29,22 @@ public class Attic {
         int neededFood = globalPopulation * 4;
         int globalFood = getAllFoodStocked();
 
-        if(neededFood < globalFood)
+        if(neededFood > globalFood)
         {
-            consumeFood(neededFood);
-            updateDurationFood();
+            return false;
         }
         else
         {
-            // display pas assez de nourriture go acheter
+            return true;
         }
+    }
+
+    public void feedPopulation(int globalPopulation)
+    {
+        int neededFood = globalPopulation * 4;
+
+        consumeFood(neededFood);
+        updateDurationFood();
     }
 
     public void consumeFood(int neededFood)
@@ -74,7 +79,7 @@ public class Attic {
 
         for (int i = 0; i<this.foodStocked.size(); i++)
         {
-            globalFood = globalFood + foodStocked.get(i).getFoodQuantity();
+            globalFood = globalFood + this.foodStocked.get(i).getFoodQuantity();
         }
 
         return globalFood;
