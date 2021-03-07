@@ -1,4 +1,7 @@
-import World.*;
+import JsonParser.InitWorld;
+import JsonParser.JsonParser;
+import World.World;
+
 import java.net.URISyntaxException;
 
 //TODO: implement tests
@@ -11,10 +14,12 @@ public class Main {
 
         //TODO: implement 2 types of gameplay
 
-        jsonParser json = new jsonParser(jsonParser.getFilePath());
+        JsonParser json = new JsonParser(JsonParser.getFilePath());
 
-        World world = json.initWorldFromJsonData(World.chooseName());
+        InitWorld initWorld = new InitWorld(json.getJson());
 
+        World world = initWorld.initWorldFromJsonData(World.chooseName());
+        System.out.println(world);
         world.initGame();
 
         world.playYear();
