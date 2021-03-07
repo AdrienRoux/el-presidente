@@ -10,14 +10,14 @@ import java.util.Scanner;
 
 public class World {
 
-    private Island island;
+    public static Island island;
     private Difficulty difficulty;
     private final Season[] seasons;
     private int currentSeason;
 
-    public void initIsland(String island, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario, Attic attic, Market market)
+    public void initIsland(String islandName, Factions[] factions, Agriculture agriculture, Industry industry, Treasury treasury, Scenario scenario, Attic attic, Market market)
     {
-        this.island = new Island(island, factions, agriculture, industry, treasury, scenario, attic, market);
+        island = new Island(islandName, factions, agriculture, industry, treasury, scenario, attic, market);
     }
 
     public World(){
