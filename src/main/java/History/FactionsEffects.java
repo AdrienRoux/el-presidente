@@ -1,7 +1,7 @@
 package History;
 
 import Factions.Factions;
-import World.Island;
+import World.*;
 
 public class FactionsEffects {
 
@@ -13,9 +13,9 @@ public class FactionsEffects {
         this.effect = effect;
     }
 
-    public void launchEffect(Island island)
+    public void launchEffect()
     {
-        Factions[] factions = island.getFactions();
+        Factions[] factions = World.island.getFactions();
         int set = 0;
         for (int i = 0; i < factions.length; i++)
         {

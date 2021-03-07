@@ -1,6 +1,6 @@
 package History;
 
-import World.Island;
+import World.*;
 
 public class ResourcesEffects {
 
@@ -13,23 +13,22 @@ public class ResourcesEffects {
         this.effect = effect;
     }
 
-    public void launchEffect(Island island)
+    public void launchEffect()
     {
         int set = 0;
-        if (name.equals("INDUSTRY"))
-        {
-            set = island.getIndustry().getPercentage();
-            island.getIndustry().setPercentage(set+effect);
-        }
-        else if (name.equals("TREASURY"))
-        {
-            set = island.getTreasury().getFunds();
-            island.getTreasury().setFunds(set+effect);
-        }
-        else if (name.equals("AGRICULTURE"))
-        {
-            set = island.getAgriculture().getPercentage();
-            island.getTreasury().setFunds(set+effect);
+        switch (name) {
+            case "INDUSTRY":
+                set = World.island.getIndustry().getPercentage();
+                World.island.getIndustry().setPercentage(set + effect);
+                break;
+            case "TREASURY":
+                set = World.island.getTreasury().getFunds();
+                World.island.getTreasury().setFunds(set + effect);
+                break;
+            case "AGRICULTURE":
+                set = World.island.getAgriculture().getPercentage();
+                World.island.getTreasury().setFunds(set + effect);
+                break;
         }
     }
 }

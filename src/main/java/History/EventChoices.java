@@ -18,14 +18,10 @@ public class EventChoices {
         
     }
     
-    public void launchEffect(Island island)
+    public void launchEffect()
     {
-        factionEffects.forEach( effect ->
-                effect.launchEffect(island)
-        );
-        resourcesEffects.forEach( effect ->
-                effect.launchEffect(island)
-        );
+        factionEffects.forEach(FactionsEffects::launchEffect);
+        resourcesEffects.forEach(ResourcesEffects::launchEffect);
     }
 
     public String getName() {
