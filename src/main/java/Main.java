@@ -19,7 +19,6 @@ public class Main {
         InitWorld initWorld = new InitWorld(json.getJson());
 
         World world = initWorld.initWorldFromJsonData(World.chooseName());
-        System.out.println(world);
         world.initGame();
 
         world.playYear();

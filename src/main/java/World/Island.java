@@ -59,8 +59,8 @@ public class Island {
 
     public void feedPopulation()
     {
-        boolean enougthFood = this.attic.isThereEnougthFood(this.factions);
-        if (enougthFood)
+        boolean enoughFood = this.attic.isThereEnougthFood(this.factions);
+        if (enoughFood)
         {
             this.attic.feedPopulation(getGlobalPopulation());
         }
@@ -71,13 +71,12 @@ public class Island {
             System.out.println("2. Acheter de la nourriture !");
             int peopleToKill = getGlobalPopulation() - (this.attic.getAllFoodStocked() / 4);
             Scanner sc = new Scanner(System.in);
-            int response = 2;
-            if (response == 1)
+            if (sc.nextInt() == 1)
             {
                 killPeople(peopleToKill, this.factions);
                 this.attic.feedPopulation(getGlobalPopulation());
             }
-            else if ( response == 2)
+            else if (sc.nextInt() == 2)
             {
                 int left = this.market.sellFood(peopleToKill*4,this.treasury,this.attic);
                 if (left != 0)
@@ -144,18 +143,8 @@ public class Island {
         int i = 0;
         for (; i < this.factions.length; i++)
         {
-            if ( this.factions[i].getSatisfaction() + 10 > 100)
-            {
-
-            }
-            else if ( (this.factions[i].getPopulation()*this.market.getBribePrice()) > this.treasury.getFunds() )
-            {
-
-            }
-            else if ( i == this.factions.length-1)
-            {
-                System.out.println(i +". Non ");
-            }
+            if ( this.factions[i].getSatisfaction() + 10 > 100) {}
+            else if ( (this.factions[i].getPopulation() * this.market.getBribePrice()) > this.treasury.getFunds() ) {}
             else
             {
                 System.out.println(i +". " + this.factions[i].getName() + " : " +
@@ -163,9 +152,12 @@ public class Island {
                         "$");
             }
         }
+
+        System.out.println(i +". Non ");
+
         Scanner sc = new Scanner(System.in);
         int response = sc.nextInt();
-        if (response != i-1)
+        if (response != i)
         {
             this.market.bribe(this.treasury, this.factions[response], this.factions);
             offerBribe();
@@ -175,16 +167,25 @@ public class Island {
     public boolean rebellion()
     {
         int total = 0;
-        for (int i = 0 ; i < this.factions.length ; i++)
-        {
-            total = this.factions[i].getSatisfaction() * this.factions[i].getPopulation();
+        for (Factions faction : this.factions) {
+            total = faction.getSatisfaction() * faction.getPopulation();
         }
         total = total / this.getGlobalPopulation();
 
-        if (total > 10)
-        {
-            return false;
-        }
-        return true; 
+        return total <= 10;
+    }
+
+    public boolean endYear(){
+        treasury.annualYield(industry);
+        attic.annualYield(agriculture);
+
+        offerBribe();
+        feedPopulation();
+
+        attic.updateDurationFood();
+
+        newBirth();
+
+        return rebellion();
     }
 }

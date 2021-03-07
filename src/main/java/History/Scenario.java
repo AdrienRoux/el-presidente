@@ -39,7 +39,6 @@ public class Scenario {
     }
 
     public void launchEvent(){
-        int choice;
 
         if (currentEventList.isEmpty()){
             currentEventList = events;

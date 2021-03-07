@@ -97,5 +97,11 @@ public class World {
         for (int i = 0; i < 4; i++) {
             playSeason();
         }
+
+        if (island.endYear()){
+            System.out.println("Vous avez perdu !");
+        } else {
+            playYear();
+        }
     }
 }
