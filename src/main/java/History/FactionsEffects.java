@@ -19,7 +19,7 @@ public class FactionsEffects {
         int set = 0;
         for (int i = 0; i < factions.length; i++)
         {
-            if (factions[i].getName() == this.name)
+            if (factions[i].getName().equals( this.name))
             {
                 set = factions[i].getSatisfaction();
                 factions[i].setSatisfaction(set + effect);

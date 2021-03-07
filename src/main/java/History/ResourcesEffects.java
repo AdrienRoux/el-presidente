@@ -16,17 +16,17 @@ public class ResourcesEffects {
     public void launchEffect(Island island)
     {
         int set = 0;
-        if (name == "INDUSTRY")
+        if (name.equals("INDUSTRY"))
         {
             set = island.getIndustry().getPercentage();
             island.getIndustry().setPercentage(set+effect);
         }
-        else if ( name == "TREASURY")
+        else if (name.equals("TREASURY"))
         {
             set = island.getTreasury().getFunds();
             island.getTreasury().setFunds(set+effect);
         }
-        else if ( name == "AGRICULTURE")
+        else if (name.equals("AGRICULTURE"))
         {
             set = island.getAgriculture().getPercentage();
             island.getTreasury().setFunds(set+effect);
