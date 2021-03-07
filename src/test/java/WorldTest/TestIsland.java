@@ -15,7 +15,7 @@ public class TestIsland extends TestCase{
     
     public void setUp()
     {
-        Treasury treasury = new Treasury(500);
+        Treasury treasury = new Treasury(20000);
         Agriculture agriculture = new Agriculture(50);
         Industry industry = new Industry(50);
         Attic attic = new Attic(500);
@@ -61,5 +61,10 @@ public class TestIsland extends TestCase{
         assertEquals(140, island.getGlobalPopulation());
         assertEquals(4,island.getTreasury().getFunds());
         assertEquals(2, island.getAttic().getAllFoodStocked());
+    }
+
+    public void testOfferBribe()
+    {
+        island.offerBribe();
     }
 }

@@ -16,6 +16,11 @@ public class Treasury {
         this.funds = funds;
     }
 
+    public void payBribe(int price )
+    {
+        this.funds = this.funds - price;
+    }
+
     public void annualYield(Industry industry)
     {
         this.funds = this.funds + industry.getPercentage()*10;

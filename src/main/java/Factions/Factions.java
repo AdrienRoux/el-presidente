@@ -43,6 +43,11 @@ public class Factions {
         this.population --;
     }
 
+    public void newPeople()
+    {
+        this.population ++;
+    }
+
     public void decreaseSatisfaction(int percentage)
     {
         this.satisfaction = this.satisfaction - percentage;
