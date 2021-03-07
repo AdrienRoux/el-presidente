@@ -28,7 +28,7 @@ public class EventChoices {
         );
     }
 
-
-
-
+    public String getName() {
+        return name;
+    }
 }
