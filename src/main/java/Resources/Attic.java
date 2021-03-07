@@ -58,7 +58,7 @@ public class Attic {
     public void feedPopulation(int globalPopulation)
     {
         int neededFood = globalPopulation * 4;
-
+        System.out.println("bouffe : " + getAllFoodStocked());
         consumeFood(neededFood);
         updateDurationFood();
     }

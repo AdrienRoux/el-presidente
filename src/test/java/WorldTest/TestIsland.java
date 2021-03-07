@@ -53,6 +53,13 @@ public class TestIsland extends TestCase{
         assertEquals(45,island.getFactions()[1].getSatisfaction());
         assertEquals(50,island.getFactions()[2].getSatisfaction());
         assertEquals(140, island.getGlobalPopulation());
+    }
 
+    public void testFeedPopulation()
+    {
+        island.feedPopulation();
+        assertEquals(140, island.getGlobalPopulation());
+        assertEquals(4,island.getTreasury().getFunds());
+        assertEquals(2, island.getAttic().getAllFoodStocked());
     }
 }

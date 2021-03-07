@@ -70,11 +70,13 @@ public class Island {
             System.out.println("1. Laisser la population mourir de faim !");
             System.out.println("2. Acheter de la nourriture !");
             int peopleToKill = getGlobalPopulation() - (this.attic.getAllFoodStocked() / 4);
+            System.out.println("people to kill : " + peopleToKill);
             Scanner sc = new Scanner(System.in);
-            int response = sc.nextInt();
+            int response = 2;
             if (response == 1)
             {
                 killPeople(peopleToKill, this.factions);
+                this.attic.feedPopulation(getGlobalPopulation());
             }
             else if ( response == 2)
             {
@@ -83,6 +85,8 @@ public class Island {
                 {
                     killPeople(left, this.factions);
                 }
+                System.out.println(getGlobalPopulation());
+                this.attic.feedPopulation(getGlobalPopulation());
             }
         }
     }
