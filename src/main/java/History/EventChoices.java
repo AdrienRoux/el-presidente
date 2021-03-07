@@ -15,7 +15,13 @@ public class EventChoices {
         this.name = name;
         this.factionEffects = factionEffects;
         this.resourcesEffects = resourcesEffects;
-        
+    }
+
+    public EventChoices(String name, ArrayList<FactionsEffects> factionEffects, ArrayList<ResourcesEffects> resourcesEffects, Events relatedEvent){
+        this.name = name;
+        this.factionEffects = factionEffects;
+        this.resourcesEffects = resourcesEffects;
+        this.relatedEvent = relatedEvent;
     }
     
     public void launchEffect()
