@@ -11,7 +11,8 @@ import java.lang.reflect.Array;
 
 public class TestIsland extends TestCase{
 
-
+    public Island island;
+    
     public void setUp()
     {
         Treasury treasury = new Treasury(500);
@@ -28,12 +29,20 @@ public class TestIsland extends TestCase{
         factions[2] = faction3;
         Market market = new Market(8);
 
-        Island island = new Island("ile",factions,agriculture,industry,treasury,scenario,attic,market);
+        island = new Island("ile",factions,agriculture,industry,treasury,scenario,attic,market);
     }
 
 
-    public void test()
+    public void testGetGlobalPopulation()
     {
+         assertEquals(150, island.getGlobalPopulation());
+    }
 
+    public void testDecreaseSatisfactionOnDeath()
+    {
+        island.decreaseSatisfactionOnDeath(island.getFactions());
+        assertEquals(58,island.getFactions()[0].getSatisfaction());
+        assertEquals(63,island.getFactions()[1].getSatisfaction());
+        assertEquals(68,island.getFactions()[2].getSatisfaction());
     }
 }

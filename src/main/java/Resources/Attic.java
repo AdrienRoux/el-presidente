@@ -13,9 +13,19 @@ public class Attic {
         this.addBatch(quantity);
     }
 
+    public ArrayList<FoodBatch> getFoodStocked()
+    {
+        return foodStocked;
+    }
+
+    public int getListSize()
+    {
+        return this.foodStocked.size();
+    }
+
     public void annualYield(Agriculture agriculture)
     {
-        int quantity = agriculture.getPercentage()*4000;
+        int quantity = agriculture.getPercentage()*40;
         this.foodStocked.add(new FoodBatch(quantity,0 ));
     }
 
@@ -35,7 +45,14 @@ public class Attic {
         int neededFood = globalPopulation * 4;
         int globalFood = getAllFoodStocked();
 
-        return neededFood <= globalFood;
+        if( neededFood <= globalFood)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void feedPopulation(int globalPopulation)
@@ -53,8 +70,8 @@ public class Attic {
             int stock = this.foodStocked.get(0).getFoodQuantity();
             if (stock > neededFood)
             {
-                neededFood = 0;
                 this.foodStocked.get(0).setFoodQuantity(stock-neededFood);
+                neededFood = 0;
             }
             else if (stock <= neededFood)
             {
@@ -66,7 +83,8 @@ public class Attic {
 
     public void updateDurationFood()
     {
-        for (FoodBatch foodBatch : this.foodStocked) {
+        for (FoodBatch foodBatch : this.foodStocked)
+        {
             foodBatch.addYear();
         }
     }
@@ -75,7 +93,8 @@ public class Attic {
     {
         int globalFood = 0;
 
-        for (FoodBatch foodBatch : this.foodStocked) {
+        for (FoodBatch foodBatch : this.foodStocked)
+        {
             globalFood = globalFood + foodBatch.getFoodQuantity();
         }
 

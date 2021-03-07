@@ -50,6 +50,11 @@ public class Island {
         return scenario;
     }
 
+    public Attic getAttic()
+    {
+        return attic;
+    }
+
     public void feedPopulation()
     {
         boolean enougthFood = this.attic.isThereEnougthFood(this.factions);
