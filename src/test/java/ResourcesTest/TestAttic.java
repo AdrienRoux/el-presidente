@@ -15,9 +15,9 @@ public class TestAttic extends TestCase
     public void setUp()
     {
         factions = new Factions[3];
-        Factions faction1 = new Factions("facion 1", 60,50);
-        Factions faction2 = new Factions("facion 2", 65,50);
-        Factions faction3 = new Factions("facion 3", 70,50);
+        Factions faction1 = new Factions("faction 1", 60,50);
+        Factions faction2 = new Factions("faction 2", 65,50);
+        Factions faction3 = new Factions("faction 3", 70,50);
         factions[0] = faction1;
         factions[1] = faction2;
         factions[2] = faction3;
