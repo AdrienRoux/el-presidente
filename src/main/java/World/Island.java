@@ -71,7 +71,7 @@ public class Island {
 
     public void killPeople(int peopleToKill, Factions[] factions)
     {
-        for (int i = 0; i < peopleToKill/4 ; i++)
+        for (int i = 0; i < peopleToKill ; i++)
         {
             int random = (int) (0 + (Math.random() * (factions.length)));
             factions[random].killPeople();

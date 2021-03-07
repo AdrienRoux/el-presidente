@@ -45,4 +45,14 @@ public class TestIsland extends TestCase{
         assertEquals(63,island.getFactions()[1].getSatisfaction());
         assertEquals(68,island.getFactions()[2].getSatisfaction());
     }
+
+    public void testKillPeople()
+    {
+        island.killPeople(10,island.getFactions());
+        assertEquals(40,island.getFactions()[0].getSatisfaction());
+        assertEquals(45,island.getFactions()[1].getSatisfaction());
+        assertEquals(50,island.getFactions()[2].getSatisfaction());
+        assertEquals(140, island.getGlobalPopulation());
+
+    }
 }
