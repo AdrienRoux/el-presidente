@@ -8,9 +8,19 @@ public class Market {
         this.price = price;
     }
 
-    public void sellFood(int quantity, Treasury treasury, Attic attic)
+    public int sellFood(int quantity, Treasury treasury, Attic attic)
     {
+        int wallet = treasury.getFunds();
+        int left = 0;
+        if (quantity*8 > wallet)
+        {
+            left = (quantity - treasury.getFunds()/8);
+            quantity = quantity - left;
+            left = left /4;
+        }
         treasury.buyFood(this.price,quantity);
         attic.addBatch(quantity);
+
+        return left;
     }
 }

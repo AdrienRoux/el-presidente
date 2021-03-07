@@ -4,6 +4,8 @@ import Factions.Factions;
 import History.Scenario;
 import Resources.*;
 
+import java.util.Scanner;
+
 public class Island {
 
     private String name;
@@ -64,8 +66,24 @@ public class Island {
         }
         else
         {
-            int peopleToKill = (getGlobalPopulation() - this.attic.getAllFoodStocked())/4;
-            killPeople(peopleToKill, this.factions);
+            System.out.println("Vous n'avez pas assez de nourriture pour nourrire tout la population faite un choix : ");
+            System.out.println("1. Laisser la population mourir de faim !");
+            System.out.println("2. Acheter de la nourriture !");
+            int peopleToKill = getGlobalPopulation() - (this.attic.getAllFoodStocked() / 4);
+            Scanner sc = new Scanner(System.in);
+            int response = sc.nextInt();
+            if (response == 1)
+            {
+                killPeople(peopleToKill, this.factions);
+            }
+            else if ( response == 2)
+            {
+                int left = this.market.sellFood(peopleToKill*4,this.treasury,this.attic);
+                if (left != 0)
+                {
+                    killPeople(left, this.factions);
+                }
+            }
         }
     }
 
