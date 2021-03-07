@@ -12,6 +12,10 @@ public class Treasury {
         return funds;
     }
 
+    public void setFunds(int funds) {
+        this.funds = funds;
+    }
+
     public void annualYield(Industry industry)
     {
         this.funds = this.funds + industry.getPercentage()*10;

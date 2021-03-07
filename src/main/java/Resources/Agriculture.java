@@ -11,4 +11,8 @@ public class Agriculture {
     public int getPercentage() {
         return percentage;
     }
+
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
+    }
 }

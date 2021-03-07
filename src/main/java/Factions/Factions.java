@@ -25,6 +25,11 @@ public class Factions {
         return name;
     }
 
+    public void setSatisfaction(int satisfaction)
+    {
+        this.satisfaction = satisfaction;
+    }
+
     public int getSatisfaction() {
         return satisfaction;
     }

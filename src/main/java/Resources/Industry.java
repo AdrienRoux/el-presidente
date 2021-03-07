@@ -11,4 +11,10 @@ public class Industry {
     public int getPercentage() {
         return percentage;
     }
+
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
+    }
+
+
 }
